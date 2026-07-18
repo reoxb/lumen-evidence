@@ -229,9 +229,9 @@ pre code{background:none;padding:0;font-size:12.5px;line-height:1.75;}
   <p class="sub">A static auditor for AI systems. What it detects, how well, on what — and what it deliberately does not claim.</p>
   <span class="stamp">Generated from labeled data · drift fails the build</span>
   <div class="figs">
-    <div><div class="fig-n">3567</div><div class="fig-l">Hand-labeled findings</div></div>
+    <div><div class="fig-n">3823</div><div class="fig-l">Hand-labeled findings</div></div>
     <div><div class="fig-n">20</div><div class="fig-l">Real products, pinned</div></div>
-    <div><div class="fig-n">19</div><div class="fig-l">Rules measured</div></div>
+    <div><div class="fig-n">20</div><div class="fig-l">Rules measured</div></div>
     <div><div class="fig-n">5</div><div class="fig-l">Doctrines refused</div></div>
   </div>
 </header>
@@ -410,8 +410,15 @@ pre code{background:none;padding:0;font-size:12.5px;line-height:1.75;}
   <td class="rule-id">TEST_GAP_DETECTED</td>
   <td class="num">799</td><td class="num">49</td><td class="num">0</td>
   <td><span class="mix" role="img" aria-label="799 true positives, 49 false positives, 0 false negatives"><i class="m-tp" style="flex:799"></i><i class="m-fp" style="flex:49"></i><i class="m-fn" style="flex:0"></i></span></td>
-  <td class="num"><span class="val">0.942</span></td><td class="num">1.000</td><td class="num">848</td>
+  <td class="num"><span class="was">0.942</span><span class="arrow">→</span><span class="val">0.999</span></td><td class="num">1.000</td><td class="num">848</td>
   <td class="rec"><a href="#tiers">2026-07-14ah · bundle</a></td>
+</tr>
+<tr>
+  <td class="rule-id">TEST_GAP_DETECTED</td>
+  <td class="num">229</td><td class="num">27</td><td class="num">0</td>
+  <td><span class="mix" role="img" aria-label="229 true positives, 27 false positives, 0 false negatives"><i class="m-tp" style="flex:229"></i><i class="m-fp" style="flex:27"></i><i class="m-fn" style="flex:0"></i></span></td>
+  <td class="num"><span class="val">0.895</span></td><td class="num">1.000</td><td class="num">256</td>
+  <td class="rec"><a href="#tiers">2026-07-16b · bundle</a></td>
 </tr>
 <tr>
   <td class="rule-id">UNSAFE_EVAL_USAGE</td>
@@ -445,6 +452,7 @@ pre code{background:none;padding:0;font-size:12.5px;line-height:1.75;}
 <li><code>TEST_GAP_DETECTED</code> — <strong>5 false positives</strong> found and eliminated at <span class="rec">2026-07-14x</span>: precision 0.966 → 1.000 over 144 surviving true positives.</li>
 <li><code>TEST_GAP_DETECTED</code> — <strong>6 false positives</strong> found and eliminated at <span class="rec">2026-07-14aa</span>: precision 0.993 → 0.999 over 800 surviving true positives.</li>
 <li><code>TEST_GAP_DETECTED</code> — <strong>26 false positives</strong> found and eliminated at <span class="rec">2026-07-14ae</span>: precision 0.859 → 1.000 over 158 surviving true positives.</li>
+<li><code>TEST_GAP_DETECTED</code> — <strong>49 false positives</strong> found and eliminated at <span class="rec">2026-07-16a</span>: precision 0.942 → 0.999 over 799 surviving true positives.</li>
 <li><code>UNSAFE_EVAL_USAGE</code> — <strong>10 false positives</strong> found and eliminated at <span class="rec">2026-07-12c</span>: precision 0.524 → 1.000 over 11 surviving true positives.</li>
 </ul></div>
 </section>
@@ -665,7 +673,7 @@ inputs = f&quot;Context: {context_str}\n\nQuestion: {input_text}\n\nAnswer:&quot
   <div class="prose">
     <p>Not every label behind this page is downloadable, and we would rather state the split than let you discover it.</p>
     <p><strong>The public tier</strong> — the commodity detections: credentials, unsafe evaluation, shell execution, and the model-call validator family — ships its full ground truth in this repository: <strong>1345 labeled findings</strong>, every CSV beside the dated record that produced it, recomputable by <code>verify.py</code>.</p>
-    <p><strong>The gated tier</strong> — the differentiated detectors: the injection family, access control, the test-gap and agent-shell rules — publishes its numbers, its boundaries and its registered misses on this page, and ships its ground truth — <strong>2222 labeled findings</strong> — as an <strong>evaluator bundle</strong>, under NDA, on request. The bundle carries the labels, the full dated records, and its own copy of the verify script that recomputes every gated number the same way.</p>
+    <p><strong>The gated tier</strong> — the differentiated detectors: the injection family, access control, the test-gap and agent-shell rules — publishes its numbers, its boundaries and its registered misses on this page, and ships its ground truth — <strong>2478 labeled findings</strong> — as an <strong>evaluator bundle</strong>, under NDA, on request. The bundle carries the labels, the full dated records, and its own copy of the verify script that recomputes every gated number the same way.</p>
     <p>The reason is stated plainly rather than buried: the labeled corpus is the asset a copy of this product would need most. Handing the commodity part to everyone costs nothing; handing the differentiated part to anonymous readers is a disclosure decision, and we made it the way this project makes every decision — recorded, with the trade named (decision 004). An evaluator with a name gets everything.</p>
   </div>
   <div class="cta">
@@ -688,7 +696,7 @@ cd lumen-evidence
 python3 verify.py          # recomputes the public tier's precision and recall from the labels</code></pre>
   <div class="prose">
     <p>If its output disagrees with what you read above, the page is wrong and you should say so.</p>
-    <p><strong>The gated tier is checkable the same way — by named evaluators.</strong> The bundle carries the remaining 2222 labeled findings and its own verify script. A number you cannot recompute from this repository is marked <em>bundle</em> in the table, never smuggled past you.</p>
+    <p><strong>The gated tier is checkable the same way — by named evaluators.</strong> The bundle carries the remaining 2478 labeled findings and its own verify script. A number you cannot recompute from this repository is marked <em>bundle</em> in the table, never smuggled past you.</p>
     <p>Every public-tier claim links to the dated record that grounds it; gated rows name their arc. The corpus is pinned to exact commits, so the code we audited is the code you would fetch.</p>
   </div>
 
@@ -707,7 +715,7 @@ python3 verify.py          # recomputes the public tier's precision and recall f
   </div>
 </section>
 <footer class="foot">
-  <p>Dossier version <span class="mono">1.1.0</span> · 3567 hand-labeled findings across 20 products.</p>
+  <p>Dossier version <span class="mono">1.1.0</span> · 3823 hand-labeled findings across 20 products.</p>
   <p class="mono">Rendered by <code>npm run evidence</code> from the labeled data. It cannot disagree with the labels; the build would fail.</p>
 </footer>
 </div>

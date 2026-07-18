@@ -46,9 +46,11 @@ four-row "hygiene debt" that had never existed, and how that phantom then propag
 the backlog and into this codebase's own doctrine for a week.
 
 The same run censuses **what fires with no label at all**, per rule. A rule may be
-measured on a deliberately narrow corpus — `TEST_GAP_DETECTED` is precision 1.000 over
-n=51, on three repositories, while firing 2,949 rows across the benchmark — but the
-denominator is then stated, never implied. See [support-matrix](support-matrix.md).
+measured on a deliberately narrow corpus — `TEST_GAP_DETECTED` stood at precision 1.000
+over n=51, on three repositories, while firing 2,949 rows across the benchmark (13n);
+six tranches later the census prints `fired 2,276, labeled 2,276 — 0 UNLABELED` (16b),
+the 13n debt settled by adjudication, not by implication — the denominator is stated,
+never implied. See [support-matrix](support-matrix.md).
 
 ## Publishing the evidence
 

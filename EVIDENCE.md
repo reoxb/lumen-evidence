@@ -9,7 +9,7 @@ transcribed by a human, and the build fails if this file drifts from the labels.
 That is not a stylistic choice: prose *did* drift here once, and it hid a real
 false positive (see the negative record below).
 
-Dossier version **1.1.0** · **3567** hand-labeled findings · **20** real products.
+Dossier version **1.1.0** · **3823** hand-labeled findings · **20** real products.
 
 ## What this is
 
@@ -113,7 +113,8 @@ name their arc and ship their labels in the evaluator bundle
 | `TEST_GAP_DETECTED` | 144 | 5 | 0 | 0.966 → **1.000** | 1.000 | 149 | 2026-07-14v · [bundle](#two-tiers-of-evidence) |
 | `TEST_GAP_DETECTED` | 800 | 6 | 0 | 0.993 → **0.999** | 1.000 | 806 | 2026-07-14y · [bundle](#two-tiers-of-evidence) |
 | `TEST_GAP_DETECTED` | 158 | 26 | 0 | 0.859 → **1.000** | 1.000 | 184 | 2026-07-14ab · [bundle](#two-tiers-of-evidence) |
-| `TEST_GAP_DETECTED` | 799 | 49 | 0 | **0.942** | 1.000 | 848 | 2026-07-14ah · [bundle](#two-tiers-of-evidence) |
+| `TEST_GAP_DETECTED` | 799 | 49 | 0 | 0.942 → **0.999** | 1.000 | 848 | 2026-07-14ah · [bundle](#two-tiers-of-evidence) |
+| `TEST_GAP_DETECTED` | 229 | 27 | 0 | **0.895** | 1.000 | 256 | 2026-07-16b · [bundle](#two-tiers-of-evidence) |
 | `UNSAFE_EVAL_USAGE` | 11 | 10 | 0 | 0.524 → **1.000** | 1.000 | 21 | [2026-07-12c](validation/2026-07-12c/VALIDATION_RECORD.md) |
 
 ### What the numbers above are numbers ABOUT
@@ -139,6 +140,7 @@ ever shows you its final number is asking you to trust that it looked.
 - `TEST_GAP_DETECTED`: **5 false positives** found and eliminated at 2026-07-14x (evaluator bundle) — precision 0.966 → 1.000 over 144 surviving true positives.
 - `TEST_GAP_DETECTED`: **6 false positives** found and eliminated at 2026-07-14aa (evaluator bundle) — precision 0.993 → 0.999 over 800 surviving true positives.
 - `TEST_GAP_DETECTED`: **26 false positives** found and eliminated at 2026-07-14ae (evaluator bundle) — precision 0.859 → 1.000 over 158 surviving true positives.
+- `TEST_GAP_DETECTED`: **49 false positives** found and eliminated at 2026-07-16a (evaluator bundle) — precision 0.942 → 0.999 over 799 surviving true positives.
 - `UNSAFE_EVAL_USAGE`: **10 false positives** found and eliminated at [2026-07-12c](validation/2026-07-12c/VALIDATION_RECORD.md) — precision 0.524 → 1.000 over 11 surviving true positives.
 
 ### Detection is not risk
@@ -336,7 +338,7 @@ that produced it, recomputable by `verify.py`.
 
 **The gated tier** — the differentiated detectors: the injection family, access
 control, the test-gap and agent-shell rules — publishes its numbers, its boundaries
-and its registered misses on this page, and ships its ground truth — **2222**
+and its registered misses on this page, and ships its ground truth — **2478**
 **labeled findings** — as an **evaluator bundle**, under NDA, on request. The bundle
 carries the labels, the full dated records, the support matrix, and its own copy of
 the verify script that recomputes every gated number the same way.
@@ -372,7 +374,7 @@ If its output disagrees with what you read above, the page is wrong and you shou
 say so.
 
 **The gated tier is checkable the same way — by named evaluators.** The bundle
-carries the remaining 2222 labeled findings and its own verify script. A number
+carries the remaining 2478 labeled findings and its own verify script. A number
 you cannot recompute from this repository is marked *bundle* in the table, never
 smuggled past you.
 
