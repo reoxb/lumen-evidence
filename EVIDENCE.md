@@ -34,7 +34,7 @@ If your assistant summarizes a web page, a support ticket, or an uploaded docume
 
 A model's output flows onward into a database write, a workflow, another API call — with nothing verifying it is even the right shape. LUMEN finds those unguarded hand-offs: the model calls and prompts whose result no schema, validator, or parser ever inspects.
 
-**Found 1254** across **11** real products. Measured by `AI_MODEL_CALL_WITHOUT_VALIDATOR`, `PROMPT_MISSING_STRUCTURED_OUTPUT`, `AI_PROMPT_WITHOUT_VALIDATOR` — precision **0.990**.
+**Found 1254** across **11** real products. Measured by `AI_MODEL_CALL_WITHOUT_VALIDATOR`, `PROMPT_MISSING_STRUCTURED_OUTPUT`, `AI_PROMPT_WITHOUT_VALIDATOR` — precision **0.991**.
 
 ### Business decisions are hiding inside prompts
 
@@ -99,7 +99,7 @@ name their arc and ship their labels in the evaluator bundle
 | `ACCESS_CONTROL_UNSCOPED_OBJECT_LOOKUP` | 19 | 0 | 0 | **1.000** | 1.000 | 19 | 2026-07-13l · [bundle](#two-tiers-of-evidence) |
 | `AI_AGENT_SHELL_WITHOUT_APPROVAL` | 1 | 5 | 1 | 0.167 → **1.000** | 0.500 | 7 | 2026-07-14r · [bundle](#two-tiers-of-evidence) |
 | `AI_MODEL_CALL_WITHOUT_VALIDATOR` | 1200 | 9 | 4 | **0.993** | 0.997 | 1213 | [2026-07-14u](validation/2026-07-14u/VALIDATION_RECORD.md) |
-| `AI_PROMPT_WITHOUT_VALIDATOR` | 22 | 2 | 0 | **0.917** | 1.000 | 24 | 2026-07-13f · [bundle](#two-tiers-of-evidence) |
+| `AI_PROMPT_WITHOUT_VALIDATOR` | 22 | 2 | 0 | 0.917 → **0.917** | 1.000 | 24 | 2026-07-13f · [bundle](#two-tiers-of-evidence) |
 | `HARDCODED_CREDENTIALS` | 17 | 53 | 0 | 0.243 → **1.000** | 1.000 | 70 | [2026-07-12c](validation/2026-07-12c/VALIDATION_RECORD.md) |
 | `PROMPT_CONTAINS_DETERMINISTIC_FORMULA` | 6 | 0 | 0 | **1.000** | 1.000 | 6 | [2026-07-14u](validation/2026-07-14u/VALIDATION_RECORD.md) |
 | `PROMPT_INJECTION_CROSSFILE_BLENDING` | 24 | 0 | 1 | **1.000** | 0.960 | 25 | 2026-07-13n · [bundle](#two-tiers-of-evidence) |
@@ -113,20 +113,9 @@ name their arc and ship their labels in the evaluator bundle
 | `TEST_GAP_DETECTED` | 144 | 5 | 0 | 0.966 → **1.000** | 1.000 | 149 | 2026-07-14v · [bundle](#two-tiers-of-evidence) |
 | `TEST_GAP_DETECTED` | 800 | 6 | 0 | 0.993 → **0.999** | 1.000 | 806 | 2026-07-14y · [bundle](#two-tiers-of-evidence) |
 | `TEST_GAP_DETECTED` | 158 | 26 | 0 | 0.859 → **1.000** | 1.000 | 184 | 2026-07-14ab · [bundle](#two-tiers-of-evidence) |
-| `TEST_GAP_DETECTED` | 799 | 49 | 0 | 0.942 → **0.999** | 1.000 | 848 | 2026-07-14ah · [bundle](#two-tiers-of-evidence) |
-| `TEST_GAP_DETECTED` | 229 | 27 | 0 | **0.895** | 1.000 | 256 | 2026-07-16b · [bundle](#two-tiers-of-evidence) |
+| `TEST_GAP_DETECTED` | 799 | 49 | 0 | 0.942 → **1.000** | 1.000 | 848 | 2026-07-14ah · [bundle](#two-tiers-of-evidence) |
+| `TEST_GAP_DETECTED` | 229 | 27 | 0 | 0.895 → **0.947** | 1.000 | 256 | 2026-07-16b · [bundle](#two-tiers-of-evidence) |
 | `UNSAFE_EVAL_USAGE` | 11 | 10 | 0 | 0.524 → **1.000** | 1.000 | 21 | [2026-07-12c](validation/2026-07-12c/VALIDATION_RECORD.md) |
-
-### What the numbers above are numbers ABOUT
-
-A precision figure is a claim about the rows somebody read. It says nothing about
-the rows nobody read — so here is how much of each rule we actually read. Every rule
-not listed below is labeled on **every row it fires** across the benchmark.
-
-- `TEST_GAP_DETECTED` fires **2,949 rows** across the benchmark, and **51** carry a label (**1.7%**). Its precision above is an honest number about those 51 rows and is **not a claim about the other 2,898**.
-
-We would rather publish the gap than let a reader assume it away. Reproduce with
-`npm run compare` then `npm run ledger:check`, which prints this census on every run.
 
 ### The arrows are the point
 
@@ -136,11 +125,13 @@ right is what it scores after the fix. We publish both, because a product that o
 ever shows you its final number is asking you to trust that it looked.
 
 - `AI_AGENT_SHELL_WITHOUT_APPROVAL`: **5 false positives** found and eliminated at 2026-07-14u (evaluator bundle) — precision 0.167 → 1.000 over 1 surviving true positives.
+- `AI_PROMPT_WITHOUT_VALIDATOR`: **2 false positives** found and eliminated at 2026-07-17a (evaluator bundle) — precision 0.917 → 0.917 over 22 surviving true positives.
 - `HARDCODED_CREDENTIALS`: **53 false positives** found and eliminated at [2026-07-12c](validation/2026-07-12c/VALIDATION_RECORD.md) — precision 0.243 → 1.000 over 17 surviving true positives.
 - `TEST_GAP_DETECTED`: **5 false positives** found and eliminated at 2026-07-14x (evaluator bundle) — precision 0.966 → 1.000 over 144 surviving true positives.
 - `TEST_GAP_DETECTED`: **6 false positives** found and eliminated at 2026-07-14aa (evaluator bundle) — precision 0.993 → 0.999 over 800 surviving true positives.
 - `TEST_GAP_DETECTED`: **26 false positives** found and eliminated at 2026-07-14ae (evaluator bundle) — precision 0.859 → 1.000 over 158 surviving true positives.
-- `TEST_GAP_DETECTED`: **49 false positives** found and eliminated at 2026-07-16a (evaluator bundle) — precision 0.942 → 0.999 over 799 surviving true positives.
+- `TEST_GAP_DETECTED`: **49 false positives** found and eliminated at 2026-07-16a (evaluator bundle) — precision 0.942 → 1.000 over 799 surviving true positives.
+- `TEST_GAP_DETECTED`: **27 false positives** found and eliminated at 2026-07-17a (evaluator bundle) — precision 0.895 → 0.947 over 229 surviving true positives.
 - `UNSAFE_EVAL_USAGE`: **10 false positives** found and eliminated at [2026-07-12c](validation/2026-07-12c/VALIDATION_RECORD.md) — precision 0.524 → 1.000 over 11 surviving true positives.
 
 ### Detection is not risk

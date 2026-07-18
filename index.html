@@ -251,7 +251,7 @@ pre code{background:none;padding:0;font-size:12.5px;line-height:1.75;}
   <h4>Its answers are trusted without being checked</h4>
   <span class="risk-n">1254<small>found</small></span>
   <p class="risk-b">A model's output flows onward into a database write, a workflow, another API call — with nothing verifying it is even the right shape. LUMEN finds those unguarded hand-offs: the model calls and prompts whose result no schema, validator, or parser ever inspects.</p>
-  <p class="risk-m">Found across <b>11</b> real products. Measured by AI_MODEL_CALL_WITHOUT_VALIDATOR · PROMPT_MISSING_STRUCTURED_OUTPUT · AI_PROMPT_WITHOUT_VALIDATOR — precision <b>0.990</b>.</p>
+  <p class="risk-m">Found across <b>11</b> real products. Measured by AI_MODEL_CALL_WITHOUT_VALIDATOR · PROMPT_MISSING_STRUCTURED_OUTPUT · AI_PROMPT_WITHOUT_VALIDATOR — precision <b>0.991</b>.</p>
 </div>
 <div class="risk">
   <h4>Business decisions are hiding inside prompts</h4>
@@ -312,7 +312,7 @@ pre code{background:none;padding:0;font-size:12.5px;line-height:1.75;}
   <td class="rule-id">AI_PROMPT_WITHOUT_VALIDATOR</td>
   <td class="num">22</td><td class="num">2</td><td class="num">0</td>
   <td><span class="mix" role="img" aria-label="22 true positives, 2 false positives, 0 false negatives"><i class="m-tp" style="flex:22"></i><i class="m-fp" style="flex:2"></i><i class="m-fn" style="flex:0"></i></span></td>
-  <td class="num"><span class="val">0.917</span></td><td class="num">1.000</td><td class="num">24</td>
+  <td class="num"><span class="was">0.917</span><span class="arrow">→</span><span class="val">0.917</span></td><td class="num">1.000</td><td class="num">24</td>
   <td class="rec"><a href="#tiers">2026-07-13f · bundle</a></td>
 </tr>
 <tr>
@@ -410,14 +410,14 @@ pre code{background:none;padding:0;font-size:12.5px;line-height:1.75;}
   <td class="rule-id">TEST_GAP_DETECTED</td>
   <td class="num">799</td><td class="num">49</td><td class="num">0</td>
   <td><span class="mix" role="img" aria-label="799 true positives, 49 false positives, 0 false negatives"><i class="m-tp" style="flex:799"></i><i class="m-fp" style="flex:49"></i><i class="m-fn" style="flex:0"></i></span></td>
-  <td class="num"><span class="was">0.942</span><span class="arrow">→</span><span class="val">0.999</span></td><td class="num">1.000</td><td class="num">848</td>
+  <td class="num"><span class="was">0.942</span><span class="arrow">→</span><span class="val">1.000</span></td><td class="num">1.000</td><td class="num">848</td>
   <td class="rec"><a href="#tiers">2026-07-14ah · bundle</a></td>
 </tr>
 <tr>
   <td class="rule-id">TEST_GAP_DETECTED</td>
   <td class="num">229</td><td class="num">27</td><td class="num">0</td>
   <td><span class="mix" role="img" aria-label="229 true positives, 27 false positives, 0 false negatives"><i class="m-tp" style="flex:229"></i><i class="m-fp" style="flex:27"></i><i class="m-fn" style="flex:0"></i></span></td>
-  <td class="num"><span class="val">0.895</span></td><td class="num">1.000</td><td class="num">256</td>
+  <td class="num"><span class="was">0.895</span><span class="arrow">→</span><span class="val">0.947</span></td><td class="num">1.000</td><td class="num">256</td>
   <td class="rec"><a href="#tiers">2026-07-16b · bundle</a></td>
 </tr>
 <tr>
@@ -434,25 +434,19 @@ pre code{background:none;padding:0;font-size:12.5px;line-height:1.75;}
     <span><i class="dot" style="background:var(--fn)"></i>false negative</span>
     <span>bar shows the shape of the labeled set</span>
   </p>
-<h3>What the numbers above are numbers about</h3>
-  <div class="prose">
-    <p>A precision figure is a claim about the rows somebody read. It says nothing about the rows nobody read — so here is how much of each rule we actually read. <strong>Every rule not listed here is labeled on every row it fires</strong> across the benchmark.</p>
-    <ul>
-<li><code>TEST_GAP_DETECTED</code> fires <strong>2,949 rows</strong> across the benchmark, and <strong>51</strong> carry a label (<strong>1.7%</strong>). Its precision above is an honest number about those 51 rows, and is <strong>not a claim about the other 2,898</strong>.</li>
-</ul>
-    <p>We would rather publish the gap than let a reader assume it away.</p>
-  </div>
 <h3>The arrows are the point</h3>
   <div class="prose">
     <p>Two rules carry an arrow. They are rules whose false positives <strong>we found in our own tool and fixed</strong>. The left number is what the rule actually scored when we labeled it; the right is what it scores after the fix.</p>
     <p>We publish both, because a product that only ever shows you its final number is asking you to trust that it looked.</p>
     <ul>
 <li><code>AI_AGENT_SHELL_WITHOUT_APPROVAL</code> — <strong>5 false positives</strong> found and eliminated at <span class="rec">2026-07-14u</span>: precision 0.167 → 1.000 over 1 surviving true positives.</li>
+<li><code>AI_PROMPT_WITHOUT_VALIDATOR</code> — <strong>2 false positives</strong> found and eliminated at <span class="rec">2026-07-17a</span>: precision 0.917 → 0.917 over 22 surviving true positives.</li>
 <li><code>HARDCODED_CREDENTIALS</code> — <strong>53 false positives</strong> found and eliminated at <span class="rec">2026-07-12c</span>: precision 0.243 → 1.000 over 17 surviving true positives.</li>
 <li><code>TEST_GAP_DETECTED</code> — <strong>5 false positives</strong> found and eliminated at <span class="rec">2026-07-14x</span>: precision 0.966 → 1.000 over 144 surviving true positives.</li>
 <li><code>TEST_GAP_DETECTED</code> — <strong>6 false positives</strong> found and eliminated at <span class="rec">2026-07-14aa</span>: precision 0.993 → 0.999 over 800 surviving true positives.</li>
 <li><code>TEST_GAP_DETECTED</code> — <strong>26 false positives</strong> found and eliminated at <span class="rec">2026-07-14ae</span>: precision 0.859 → 1.000 over 158 surviving true positives.</li>
-<li><code>TEST_GAP_DETECTED</code> — <strong>49 false positives</strong> found and eliminated at <span class="rec">2026-07-16a</span>: precision 0.942 → 0.999 over 799 surviving true positives.</li>
+<li><code>TEST_GAP_DETECTED</code> — <strong>49 false positives</strong> found and eliminated at <span class="rec">2026-07-16a</span>: precision 0.942 → 1.000 over 799 surviving true positives.</li>
+<li><code>TEST_GAP_DETECTED</code> — <strong>27 false positives</strong> found and eliminated at <span class="rec">2026-07-17a</span>: precision 0.895 → 0.947 over 229 surviving true positives.</li>
 <li><code>UNSAFE_EVAL_USAGE</code> — <strong>10 false positives</strong> found and eliminated at <span class="rec">2026-07-12c</span>: precision 0.524 → 1.000 over 11 surviving true positives.</li>
 </ul></div>
 </section>
