@@ -124,7 +124,7 @@ fixed**. The left number is what the rule actually scored when we labeled it; th
 right is what it scores after the fix. We publish both, because a product that only
 ever shows you its final number is asking you to trust that it looked.
 
-- `AI_AGENT_SHELL_WITHOUT_APPROVAL`: **5 false positives** found and eliminated at 2026-07-14u (evaluator bundle) — precision 0.167 → 1.000 over 1 surviving true positives.
+- `AI_AGENT_SHELL_WITHOUT_APPROVAL`: **5 false positives** found and eliminated at 2026-07-19b (evaluator bundle) — precision 0.167 → 1.000 over 1 surviving true positives.
 - `AI_PROMPT_WITHOUT_VALIDATOR`: **2 false positives** found and eliminated at 2026-07-17a (evaluator bundle) — precision 0.917 → 0.917 over 22 surviving true positives.
 - `HARDCODED_CREDENTIALS`: **53 false positives** found and eliminated at [2026-07-12c](validation/2026-07-12c/VALIDATION_RECORD.md) — precision 0.243 → 1.000 over 17 surviving true positives.
 - `TEST_GAP_DETECTED`: **5 false positives** found and eliminated at 2026-07-14x (evaluator bundle) — precision 0.966 → 1.000 over 144 surviving true positives.
