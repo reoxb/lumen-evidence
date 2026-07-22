@@ -388,7 +388,7 @@ checkable by the same script.
 which pages of it are licensed reading.** That is the argument of this page, and it
 is the only one we intend to make.
 
-**Want to see what it finds in your codebase?** Bring a repository — we will show you
-the findings and the evidence behind each one, including the ones we get wrong.
-[Get in touch](https://github.com/reoxb/lumen-evidence/issues).
+**Want to see what it finds in your codebase?** Concierge audits are open — bring a
+repository; you get the findings and the evidence behind each one, including the ones
+we get wrong. [Get your repo audited](mailto:suarzs@gmail.com?subject=LUMEN%20audit%20request).
 
