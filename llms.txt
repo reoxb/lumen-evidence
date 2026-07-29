@@ -1,0 +1,19 @@
+# LUMEN — Governance Audit for AI Systems
+
+> Static governance auditor for AI-system codebases (agents, tools, prompts, model calls), sold as a concierge audit service. Every detection metric is computed from 3823 hand-labeled findings across 20 real open-source products — and is recomputable by you: clone the evidence repository and run `python3 verify.py`.
+
+LUMEN finds the places an AI system can be steered by what it reads, trusted
+without being checked, or quietly deciding business rules inside prompts —
+before they ship. It is a static auditor: it finds exposure, it does not stop
+attacks. The engine is closed-source; the evidence is not.
+
+## Offer
+
+- [agents.md](https://reoxb.github.io/lumen-evidence/agents.md): the offer for AI agents — packages and prices (USD), how to verify every claim, and how your principal buys
+
+## Evidence
+
+- [EVIDENCE.md](https://reoxb.github.io/lumen-evidence/EVIDENCE.md): the validation dossier — every metric computed from the labeled CSVs at build time, including measured rejections and registered misses
+- [verify.py](https://reoxb.github.io/lumen-evidence/verify.py): dependency-free script that recomputes the public tier's precision and recall from the committed labels
+- [rule-lifecycle.md](https://reoxb.github.io/lumen-evidence/rule-lifecycle.md): how a detection rule earns default-on status (provisional → validated → promoted)
+- [Human page](https://reoxb.github.io/lumen-evidence/): the same dossier rendered for human readers
